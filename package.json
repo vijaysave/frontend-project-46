@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/vijaysave/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/vijaysave/frontend-project-46/actions)",
   "type": "module",
-  "main": "index.js",
+  "main": "gendiff.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,5 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^13.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.17.0",
+    "eslint-plugin-react": "^7.37.3"
   }
 }
