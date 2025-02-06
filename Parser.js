@@ -1,15 +1,25 @@
 import fs from 'fs';  
-import path from 'path';
+import path from 'path';  
+import yaml from 'js-yaml';  
 
-/**  
- * Функция для чтения и парсинга JSON-файла.
- * @param {string} filepath - Путь к файлу.
- * @returns {Object} - Парсенные данные из файла.
- */
-const parseJsonFile = (filepath) => {
-  const absolutePath = path.resolve(process.cwd(), filepath);
-  const fileContent = fs.readFileSync(absolutePath, 'utf-8');
-  return JSON.parse(fileContent);
-};
+const parseJsonFile = (filepath) => {  
+  try {  
+    const absolutePath = path.resolve(process.cwd(), filepath);  
+    const fileContent = fs.readFileSync(absolutePath, 'utf-8');  
+    return JSON.parse(fileContent);  
+  } catch (error) {  
+    throw new Error(`Cannot read JSON file at ${filepath}: ${error.message}`);  
+  }  
+};  
 
-export default parseJsonFile;
+const parseYamlFile = (filepath) => {  
+  try {  
+    const absolutePath = path.resolve(process.cwd(), filepath);  
+    const fileContent = fs.readFileSync(absolutePath, 'utf-8');  
+    return yaml.load(fileContent);  
+  } catch (error) {  
+    throw new Error(`Cannot read YAML file at ${filepath}: ${error.message}`);  
+  }  
+};  
+
+export { parseJsonFile, parseYamlFile };
